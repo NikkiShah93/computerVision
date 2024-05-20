@@ -25,6 +25,8 @@ while True:
     if results.multi_hand_landmarks:
         for hand in results.multi_hand_landmarks:
             drawhands.draw_landmarks(img, hand, mphand.HAND_CONNECTIONS)
+            for id, lm in enumerate(hand.landmarks):
+                print(id, lm)
     ## calculating the fps
     curr_time = time.time()
     fps = 1 / (curr_time - past_time)
