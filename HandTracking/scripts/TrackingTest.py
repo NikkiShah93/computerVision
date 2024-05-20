@@ -6,7 +6,7 @@ video = cv2.VideoCapture(0)
 while True:
     success, image = video.read()
     Hand = ht.HandTracker()
-    positions, image = Hand.findPosition(image, hand_number=0)
+    positions, image = Hand.findPosition(image, hand_number=0, draw=True)
     if positions:
         print(positions[4])
     

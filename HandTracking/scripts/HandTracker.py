@@ -25,7 +25,7 @@ class HandTracker():
         self.result, RGBimage = self.findHands(image)
         position_dict = {}
         h, w, c = image.shape
-        if self.result.multi_hand_landmarks is not None and hand_number in self.result.multi_hand_landmarks:
+        if len(self.result.multi_hand_landmarks) > 0 and hand_number in self.result.multi_hand_landmarks:
             for id, land_mark in enumerate(self.result.multi_hand_landmarks[hand_number]):
                 position_dict[id] = (int(land_mark.x * w), int(land_mark.y * h))
                 if draw:
