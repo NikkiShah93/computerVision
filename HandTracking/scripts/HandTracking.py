@@ -25,8 +25,12 @@ while True:
     if results.multi_hand_landmarks:
         for hand in results.multi_hand_landmarks:
             drawhands.draw_landmarks(img, hand, mphand.HAND_CONNECTIONS)
-            for id, lm in enumerate(hand.landmarks):
-                print(id, lm)
+            for id, lm in enumerate(hand.landmark):
+                ## since the locations are not in pixels
+                ## we need to convert them 
+                h, w, c = img.shape
+                cx, cy = int(lm.x*w), int(lm.y*h)
+                print(id, cx, cy)
     ## calculating the fps
     curr_time = time.time()
     fps = 1 / (curr_time - past_time)
